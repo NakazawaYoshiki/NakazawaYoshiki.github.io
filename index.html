@@ -24,8 +24,8 @@
 			}
 		]
 	};
-	for (let i = 0; i < 6; i++) {
-		time_m = String((i+1)*10-10) + "～" + String((i+1)*10-1) + "分";
+	for (let i = 0; i < 12; i++) {
+		time_m = String((i+1)*5-5) + "～" + String((i+1)*5-1) + "分";
 		mydata.labels.push(time_m);
 		mydata.datasets[0].data.push(0);
 	}
@@ -74,7 +74,7 @@
 				scales: {
 					yAxes: [{
 						ticks: {
-							max: 600,
+							max: 300,
 							min: 0,
 							stepSize: 5
 						}
@@ -162,7 +162,7 @@
 	// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
 	// the link to your model provided by Teachable Machine export panel
-	const URL = "https://teachablemachine.withgoogle.com/models/W16fdLpIm/";
+	const URL = "https://teachablemachine.withgoogle.com/models/q5LFfklZ5/";
 
 	let model, webcam, labelContainer, maxPredictions;
 
@@ -209,9 +209,9 @@
 		}
 		chart2.update();
 		
-		var min = new Date().getMinutes() - (new Date().getMinutes()%10);
-		var data_index = min / 10;
-		if (prediction[1].probability.toFixed(2)>=0.70) {
+		var min = new Date().getMinutes() - (new Date().getMinutes()%5);
+		var data_index = min / 5;
+		if (prediction[1].probability.toFixed(2)>=0.75) {
 			count += 1;
 			if (count>=30) {
 				clearInterval(timer);
@@ -224,4 +224,3 @@
 	}
 </script>
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeM1wBwbrkYHvPCxip47pnrHKdJeGeXLc5Q2OytQZyVbE5flQ/viewform?usp=sf_link"target="_blank">ここをクリックして数値を入力</a>
-
